@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Documentation</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    #footer {
+            position: fixed;
+            padding: 10px 10px 0px 10px;
+            bottom: 0;
+            width: 100%;
+            /* Height of the footer*/
+            height: 40px;
+            background: black;
+			color: white;
+			}
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+  </style>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a href={{homeurl}}>Home</a></li>
+					<li class="active"><a>Documentation</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+		<div id="container">
+			<nav>
+				<ul>
+					<li><a href="#introduction" target="_parent">Introduction</a></li>
+					<li><a href="#glossary" target="_parent">Glossary of Terms</a></li>
+					<li><a href="#evenodd" target="_parent">Even and Odd Numbers</a></li>
+					<li><a href="#divisors" target="_parent">Divisors. Prime and Composite Numbers</a></li>
+					<li><a href="#divisability" target="_parent">Divisability Classes</a></li>
+				</ul>
+			</nav>
+			<section id="introduction">
+				<h1>Introduction</h1>
+				<p>Welcome. This page contains explanation on usage of the Numerical Analyzer App.</p>
+			</section>
+			<section id="glossary">
+				<h1>Glossary of Terms</h1>
+				<p>Definitions of the various mathematical terms that can be encountered in the program output are provided below.</p>
+			</section>
+			<section id="evenodd">
+				<h2>Even and Odd Numbers</h2>
+				<p><b>An even number</b> is an integer number that can be represented as product of some integer and 2. For example, 6 is an even number because 6 &equals; 3 &times; 2.</p>
+				<p><b>An odd number</b> is an integer number that can not be represented as product of some integer and 2, but can be represented as 1 plus product of some integer and 2. For example, 7 is an odd number because 7 &equals; 1 &plus; 3 &times; 2.</p>
+			</section>
+			<section id="divisors">
+				<h2>Divisors. Prime and Composite Numbers</h2>
+				<p><b>A divisor</b> of an integer N is such iteger M, that for some other integer K (which is also a divisor), the following holds true: N&equals;MK. For example, divisors of 6 are 1, 2, 3 and 6: 6&equals;1&times;6&equals;2&times;3. For any integer N, number N itself and 1 are always divisors of N.</p>
+				<p><b>A prime number</b> is a number greater than 1 whose only divisors are number itself and 1. Aside from 1, all other integers are called <b>composite</b>. Number 1 is neither prime nor composite.</p>
+				<p>Two numbers are called <b>coprime</b> in relation to each other if they don't share any divisors in common aside from 1.</p>
+				<p>Divisor K is <b>an unitary proper divisor</b> of N if K and N/K are coprimes and K isn't equal to N.</p>
+				<p>Representation of an integer n purely in terms of product of powers of prime numbers is called <b>prime factorization</b> of n. Prime factorization of each number is unique. For example, prime factorization of 60 is 2<sup>2</sup>&times;3&times;5.</p>
+				<p>If number has no powers greater than 1 in its prime factorization representation, it is called <b>a squareless number</b>.</p>
+				<p>Number is called <b>a powerful number</b> if and only if it can be represented as a positive integer power of an integer number.</p>
+				<p>Number is called <b>a semiprime number</b> if and only if can be reprsented as product of two, not neccessary distinct, prime numbers.</p>
+				<p>Number is called <b>a sphenic number</b> if and only if it can be reprsented as product of three distinct prime numbers.</p>
+				<p>Number is called <b>a pronic number</b> if and only if it can be reprsented as product of two consequent integers.</p>
+
+				<p></p>
+			</section>
+			<section id="divisability">
+				<h2>The Number of Divisors and Sum of Divisors</h2>
+				<p>The sum of all divisors of an integer n is denoted <b>&sigma;(n)</b>. The ratio &sigma;(n)/n is known as <b>an abundancy index</b>.</p>
+				<p>If &sigma;(n)&equals;2n, then number n is called <b>a perfect number</b>. If &sigma;(n) &gt; 2n, then number n is <b>abundant</b>, likewise if &sigma;(n) &lt; 2n, then number n is <b>deficient</b>.</p>
+				<p>Number is called <b>a refactorable number</b> if and only if it is disible by the number of its divisors.</p>
+				<p>Number is called <b>an arithmetic number</b> if and only if its sum of divisor is disible by the number of its divisors.</p>
+			</section>
+			<div id="footer"></div>
+		</div>
+</body>
+<html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Analysis of number {{number}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 450px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    #footer {
+            position: fixed;
+            padding: 10px 10px 0px 10px;
+            bottom: 0;
+            width: 100%;
+            /* Height of the footer*/
+            height: 40px;
+            background: black;
+			color: white;
+			}
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
+  </style>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a href={{homeurl}}>Home</a></li>
+					<li><a href={{docsurl}}>Documentation</a></li>
+					<li class="active"><a>Numerical Analysis</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div id="container">
+			<ul>
+				{% if eveness == True %}
+					<li>{{number}} is an <b>even number</b>: {{number}} = 2&#215;{{number//2}}.</li>
+				{% else %}
+					<li>{{number}} is an <b>odd number</b>: {{number}} = 2&#215;{{number//2}} &#43; 1.</li>
+				{% endif %}
+				{% if primality == True %}
+					<li>{{number}} is a <b>prime number</b>. Its only divisors are 1 and {{number}}.</li>
+					<li>From its <b>primality</b> the following qualities are guaranteed:</li>
+					<ul>
+						<li>It is not <b>a powerful number</b>, which further implies the following qualities:</li>
+							<ul>
+								<li>It is <b>not a perfect power</b>.</li>
+								<li>It is <b>a square-free number</b>.</li>
+							</ul>
+						<li>It is not <b>a semiprime number</b>.</li>
+						<li>It is not <b>a sphenic number</b>.</li>
+						<li>It is not <b>a pronic number</b>.</li>
+						<li>Its roughness and smoothness are equal to each other and to the number {{number}} itself, hence it is also <b>an unsual number</b>, because its greatest divisor is greater than square root of {{number}}.</li>
+						<li>Its sum of divisors is {{number}} &#43; 1 &#61; {{sumdivs}} &#60; 2&#215;{{number}}, hence it is <b>a deficient number</b>, which means it is <b>not perfect or abundant</b>.</li>
+						<li>It is <b>not unitary perfect number</b>.</li>
+						<li>It is <b>not a primorial</b>.</li>
+					</ul>
+					<li>The abundancy index of {{number}} equals to {{sumdivs}}/{{number}} &#61; {{abundancy_index}}.</li>
+					{% if arithmetic == True %}<li>The arithmetic mean of its divisors is whole number ({{sumdivs}}/{{numofdivs}} &#61; {{sumdivs//numofdivs}}), hence it is <b>an arithmetic number</b>, just like all prime numbers except 2.</li>{% endif %}
+					{% if factorial == True %}<li>It is <b>a factorial</b>, {{number}} &#61; {{factorial_base}}!. 2 is the only prime number that is also a factorial.</li>{% endif %}
+					{% if refactorable == True %}<li>It is <b>a refactorable</b> number. 2 is the only refactorable prime number.</li>{% endif %}
+			{% else %}
+				{% if number == 1 %}
+					<li>1 doesn't have any prime factors.</li>
+					<li>Its only divisor is itself.</li>
+					<li>It is neither prime nor composite. It is a 0-almost prime.</li>
+					<li>It is <b>not a semiprime number</b>.</li>
+					<li>It is <b>not a sphenic number</b>.</li>
+					<li>It is <b>not a pronic number</b>.</li>
+					<li>It is <b>not a refactorable number</b>.</li>
+					<li>It is <b>not an arithmetic number</b>.</li>
+					<li>It is <b>a deficient number</b>.</li>
+				{% else %}
+					<li>{{number}} is <b>a composite number</b>.</li>
+					<li>
+						The prime factorization of {{number}} is <b>{{prime_factorization}}</b>. The prime factorization implies the following qualities of {{number}}:
+					</li>
+					<ul>
+						<li>It is a {{almstprm}}-almost prime number.</li>
+						{% if sqrfree == True %}<li>It is <b>a square-free number</b>.</li>{% endif %}
+						{% if powerful == True %}<li>It is <b>a powerful number</b>.</li>{% endif %}
+						{% if perfectpower == True %}<li>It is <b>a perfect power</b>: {{number}} = {{baseofperfectpower}}<sup>{{powerofperfectpower}}</sup>.</li>{% endif %}
+						{% if achilles == True %}<li>Since {{number}} is a powerful number, that is <b>not a perfect power</b>, it is <b>an achilles number</b>.</li>{% endif %}
+						{% if semiprime == True %}<li>It is <b>a semiprime number</b>.</li>{% endif %}
+						{% if sphenic == True %}<li>It is <b>a sphenic number</b>.</li>{% endif %}
+						{% if unusual == True %}<li>It is <b>an unusual number</b>, since square of its greatest divisor is greater than number itself: {{smoothness}}<sup>2</sup> &#62; {{number}}.</li>{% endif %}
+						<li>It is <b>a {{smoothness}}-smooth number</b>{% if regular == True %}, hence it is also <b>a regular number</b>{% endif %}.</li>
+						<li>It is <b>a {{roughness}}-rough number</b>.</li>
+						{% if primorial == True %}<li>It is <b>a primorial</b>, the product of {{number_of_prime_divisors}} first primes numbers.</li>{% endif %}
+					</ul>
+					<li>{{number}} has {{numofdivs}} divisors: <b>{{divisors}}</b>; of them the following are proper unitary divisors: <b>{{unipropdivs}}</b>.</li>
+					<ul>
+						{% if refactorable == True %}<li>It is <b>a refactorable number</b>, because number of its divisors ({{numofdivs}}) is also divisor of {{number}}.{% endif %}
+						<li>Sum of its divisors is <b>{{sumdivs}}</b>. Hence:</li>
+						<ul>
+							<li>{% if perfect == True %}It is the same as double the number itself. Hence it is <b>a prefect number</b>.{% endif %}{% if abundant == True %}It is more then double the number itself. Hence it is <b>an abundant number</b>.{% endif %}{% if deficient == True %}It is less then double the number itself. Hence it is <b>a deficient number</b>.{% endif %}</li>
+							<li>The abundancy index of {{number}} equals to {{sumdivs}}/{{number}} &#61; {{abundancy_index}}.</li>
+							{% if arithmetic == True %}<li>The arithmetic mean of its divisors is whole number ({{sumdivs}}/{{numofdivs}} &#61; {{sumdivs//numofdivs}}), hence it is <b>an arithmetic number</b>.</li>{% endif %}
+						</ul>
+						<li>Therefore sum of its unitary proper divisors is <b>{{unidivsum}}</b>.{% if unitary_perfect == True %} It is the same as number itself, hence it is <b>an unitary perfect number</b>.{% endif %}</li>
+					</ul>
+					{% if pronic == True %}<li>It is <b>a pronic number</b>, {{number}} &#61; {{pronic_divisor}}&#215({{pronic_divisor}}+1);.</li>{% endif %}
+					{% if factorial == True %}<li>It is <b>a factorial</b>, {{number}} &#61; {{factorial_base}}!.</li>{% endif %}
+				</ul>
+
+				{% endif %}
+			{% endif %}
+			<center>
+			<div id="footer"></div>
+			</center>
+	</div>
+</body>
+<html>
