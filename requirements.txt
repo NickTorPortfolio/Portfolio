@@ -1,0 +1,4 @@
+Required Python modules:
+	Flask
+	numpy
+	math
